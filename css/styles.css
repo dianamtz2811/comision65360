@@ -1,0 +1,73 @@
+/* Estilo general */
+body {
+    font-family: Helvetica, sans-serif;
+    background-color: #cfb8d8;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #4c3565;
+}
+
+#iniciar {
+    display: block;
+    margin: 20px auto;
+}
+
+button {
+    background-color: #4c3565;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+    display: block;
+}
+
+button:hover {
+    background-color: #1d1922;
+}
+
+#listaLibros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Tarjetas de libros */
+.libro {
+    background: rgb(250, 241, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 5px 25px 25px;
+    margin: 10px;
+    width: 250px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.libro h3 {
+    color: #70419c;
+    font-size: 26px;
+    min-height: 30px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.libro p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.libro button {
+    margin-top: 20px;
+}
