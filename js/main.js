@@ -1,62 +1,42 @@
-let libros = [
-    {
-        id: 1,
-        titulo: "Estas ruinas que ves",
-        autor: "Jorge Ibargüengoitia",
-        año: 1975,
-        genero: "Novela",
-        leido: false
-    },
-
-    {
-        id: 2,
-        titulo: "El laberinto de la soledad",
-        autor: "Octavio Paz",
-        año: 1950,
-        genero: "Ensayo",
-        leido: false
-    },
-
-    {
-        id: 3,
-        titulo: "El amor en los tiempos del cólera",
-        autor: "Gabriel García Márquez",
-        año: 1985,
-        genero: "Novela",
-        leido: true
-    },
-
-    {
-        id: 4,
-        titulo: "La casa de los espíritus",
-        autor: "Isabel Allende",
-        año: 1982,
-        genero: "Novela",
-        leido: false
-    },
-
-    {
-        id: 5,
-        titulo: "Cien años de soledad",
-        autor: "Gabriel García Márquez",
-        año: 1967,
-        genero: "Novela",
-        leido: true
-    }
-];
+let libros = [];
 
 //Mensajes de Bievenida
 const mensajes = [
-    "¡Bienvendo! ¿Qué vas a leer hoy?",
+    "¡Bienvenido! ¿Qué vas a leer hoy?",
     "¡Hola! Comienza la aventura literaria",
     "¡Hola! ¿Qué se te antoja leer hoy?"
 ];
 
+//Cargar libros del localStorage
 document.addEventListener("DOMContentLoaded", () => {
+    cargarLibros();
     document.getElementById("mensaje").innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
-    mostrarLibros();
 });
 
+//Función para cargar los libros del localStorage
+function cargarLibros() {
+    const librosGuardados = localStorage.getItem("libros");
+    if (librosGuardados) {
+        libros = JSON.parse(librosGuardados);
+    } else {
+        fetch("libros.json")
+            .then(response => response.json())
+            .then(data => {
+                libros.push(...data);
+                guardarLibros();
+                mostrarLibros();
+            })
+            .catch(error => console.error("Error al cargar los libros", error));
+    }
+    mostrarLibros();
+}
+
+//Función para guardar los libros en el localStorag
+function guardarLibros() {
+    localStorage.setItem("libros", JSON.stringify(libros));
+}
+
+//Función para mostrar los libros en la página
 function mostrarLibros() {
     let listaLibros = document.getElementById("listaLibros");
     listaLibros.innerHTML = "";
@@ -76,27 +56,50 @@ function mostrarLibros() {
     });
 }
 
-function agregarLibro() {
-    let titulo = prompt("Ingresa el título del libro:").trim();
-    let autor = prompt("Ingresa el autor del libro:").trim();
-    let año = parseInt(prompt("Ingresa el año del libro:").trim());
-    let genero = prompt("Ingresa el género del libro:").trim();
-    let leido = confirm("¿Ya lo leíste?");
-
-    if (titulo && autor && !isNaN(año) && genero) {
-        libros.push({ id:libros.length + 1, titulo, autor, año, genero, leido });
-        mostrarLibros();
-    } else {
-        alert("Por favor, ingresa los datos válidos.")
-    }
-}
-
+//Función para cambiar el status de un libro
 function cambiarStatus(id) {
     let libro = libros.find(libro => libro.id === id);
     if (libro) {
         libro.leido = !libro.leido;
+        guardarLibros();
         mostrarLibros();
     }
 }
 
-document.getElementById("iniciar").addEventListener("click", agregarLibro);
+//Evento para agregar un libro
+document.getElementById("iniciar").addEventListener("click", function() {
+    document.getElementById("formularioLibro").style.display = "block";
+});
+
+//Manejo del envío del formulario
+document.getElementById("formularioLibro").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    //Obtener los datos del formulario
+    let titulo = document.getElementById("titulo").value.trim();
+    let autor = document.getElementById("autor").value.trim();
+    let año = document.getElementById("año").value.trim();
+    let genero = document.getElementById("genero").value.trim();
+    let leido = document.getElementById("leido").checked;
+
+    //Validar datos
+    if (titulo && autor && !isNaN(año) && genero) {
+        libros.push({ id:libros.length + 1, titulo, autor, año, genero, leido });
+        guardarLibros();
+        mostrarLibros();
+        document.getElementById("formularioLibro").reset();
+        document.getElementById("formularioLibro").style.display = "none";
+    } else {
+        alert("Por favor, ingresa datos válidos");
+    }
+});
+
+//Mostrar u ocultar ek formulario
+document.getElementById("mostrarFormulario").addEventListener("click", function() {
+    let formulario = document.getElementById("formularioLibro");
+    formulario.style.display = formulario.style.display === "none" ? "block" : "none";
+});
+
+
+
+

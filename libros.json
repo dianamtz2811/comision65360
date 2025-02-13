@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1,
+        "titulo": "Cien años de soledad",
+        "autor": "Gabriel García Márquez",
+        "año": 1967,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 2,
+        "titulo": "1984",
+        "autor": "George Orwell",
+        "año": 1949,
+        "genero": "Distopía",
+        "leido": false
+    },
+    {
+        "id": 3,
+        "titulo": "Orgullo y prejuicio",
+        "autor": "Jane Austen",
+        "año": 1813,
+        "genero": "Novela romántica",
+        "leido": false
+    },
+    {
+        "id": 4,
+        "titulo": "Don Quijote de la Mancha",
+        "autor": "Miguel de Cervantes",
+        "año": 1605,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 5,
+        "titulo": "Matar a un ruiseñor",
+        "autor": "Harper Lee",
+        "año": 1960,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 6,
+        "titulo": "Crimen y castigo",
+        "autor": "Fiódor Dostoievski",
+        "año": 1866,
+        "genero": "Novela psicológica",
+        "leido": false
+    },
+    {
+        "id": 7,
+        "titulo": "Ulises",
+        "autor": "James Joyce",
+        "año": 1922,
+        "genero": "Novela experimental",
+        "leido": false
+    },
+    {
+        "id": 8,
+        "titulo": "El gran Gatsby",
+        "autor": "F. Scott Fitzgerald",
+        "año": 1925,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 9,
+        "titulo": "Los miserables",
+        "autor": "Victor Hugo",
+        "año": 1862,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 10,
+        "titulo": "Fahrenheit 451",
+        "autor": "Ray Bradbury",
+        "año": 1953,
+        "genero": "Ciencia ficción",
+        "leido": false
+    },
+    {
+        "id": 21,
+        "titulo": "El Señor de los Anillos",
+        "autor": "J.R.R. Tolkien",
+        "año": 1954,
+        "genero": "Fantasía",
+        "leido": false
+    },
+    {
+        "id": 22,
+        "titulo": "Las uvas de la ira",
+        "autor": "John Steinbeck",
+        "año": 1939,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 23,
+        "titulo": "El ruido y la furia",
+        "autor": "William Faulkner",
+        "año": 1929,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 24,
+        "titulo": "Rayuela",
+        "autor": "Julio Cortázar",
+        "año": 1963,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 25,
+        "titulo": "Pedro Páramo",
+        "autor": "Juan Rulfo",
+        "año": 1955,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 26,
+        "titulo": "La montaña mágica",
+        "autor": "Thomas Mann",
+        "año": 1924,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 27,
+        "titulo": "El túnel",
+        "autor": "Ernesto Sabato",
+        "año": 1948,
+        "genero": "Novela psicológica",
+        "leido": false
+    },
+    {
+        "id": 28,
+        "titulo": "Ensayo sobre la ceguera",
+        "autor": "José Saramago",
+        "año": 1995,
+        "genero": "Novela",
+        "leido": false
+    },
+    {
+        "id": 29,
+        "titulo": "El hombre en busca de sentido",
+        "autor": "Viktor Frankl",
+        "año": 1946,
+        "genero": "Ensayo",
+        "leido": false
+    },
+    {
+        "id": 30,
+        "titulo": "Siddhartha",
+        "autor": "Hermann Hesse",
+        "año": 1922,
+        "genero": "Novela filosófica",
+        "leido": false
+    }
+]

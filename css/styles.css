@@ -11,9 +11,72 @@ h1 {
     color: #4c3565;
 }
 
-#iniciar {
-    display: block;
+#iniciar,
+#mostrarFormulario {
+    display: inline-block;
+    margin: 10px auto;
+    background-color: #4c3565;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+#iniciar:hover,
+#mostrarFormulario:hover {
+    background-color: #1d1922;
+}
+
+/* Formulario */
+#formularioLibro {
+    background: rgb(250, 241, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
     margin: 20px auto;
+    max-width: 400px;
+    text-align: left;
+    display: none;
+}
+
+#formularioLibro label {
+    display: block;
+    margin-top: 10px 0 5px;
+    font-weight: bold;
+    color: #4c3565;
+}
+
+#formularioLibro input[type="text"], 
+#formularioLibro input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#formularioLibro input[type="checkbox"] {
+    margin-left: 10px;
+}
+
+#formularioLibro button[type="submit"] {
+    background-color: #4c3565;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+#formularioLibro button[type="submit"]:hover {
+    background-color: #1d1922;
 }
 
 button {
@@ -52,7 +115,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    height: 280px;
 }
 
 .libro h3 {
@@ -69,5 +132,5 @@ button:hover {
 }
 
 .libro button {
-    margin-top: 20px;
+    margin-top: auto;
 }
