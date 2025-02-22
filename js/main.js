@@ -7,11 +7,50 @@ const mensajes = [
     "¡Hola! ¿Qué se te antoja leer hoy?"
 ];
 
+//Mostrar/ocultar calculadora
+document.getElementById("mostrarCalculadora").addEventListener("click", function() {
+    const calculadora = document.getElementById("calculadoraTiempoLectura");
+    calculadora.style.display = calculadora.style.display === "none" ? "block" : "none";
+});
+
+//Calcular el tiempo de lectura
+document.getElementById("calcularTiempo").addEventListener("click", function() {
+    const paginasLibro = parseInt(document.getElementById("paginasLibro").value);
+    const paginasDia = parseInt(document.getElementById("paginasDia").value);
+
+    if (isNaN(paginasLibro) || isNaN(paginasDia) || paginasLibro <= 0 || paginasDia <= 0) {
+        document.getElementById("resultadoTiempo").textContent = "Por favor, ingresa datos válidos";
+        return;
+    }
+
+    const diasNecesarios = Math.ceil(paginasLibro / paginasDia);
+    document.getElementById("resultadoTiempo").textContent = `Para terminar de leer este libro necesitas ${diasNecesarios} días.`;
+});
+
 //Cargar libros del localStorage
 document.addEventListener("DOMContentLoaded", () => {
     cargarLibros();
     document.getElementById("mensaje").innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
 });
+
+//Función para notificaciones de Toastify
+function mostrarNotificacion(mensaje, tipo = "éxito") {
+    const backgroundColor = tipo === "éxito"
+    ? "linear-gradient(to right, #00b09b, #96c93d)"
+    : "linear-gradient(to right, #ff5f6d, #ffc371)";
+
+    Toastify({
+        text: mensaje,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        style: {
+            background: backgroundColor,
+        },
+        stopOnFocus: true
+    }).showToast();
+}
 
 //Función para cargar los libros del localStorage
 function cargarLibros() {
@@ -25,8 +64,12 @@ function cargarLibros() {
                 libros.push(...data);
                 guardarLibros();
                 mostrarLibros();
+                mostrarNotificacion("Libros cargados correctamente");
             })
-            .catch(error => console.error("Error al cargar los libros", error));
+            .catch(error => {
+                console.error("Error al cargar los libros", error);
+                mostrarNotificacion("Error al cargar los libros", "error");
+            });
     }
     mostrarLibros();
 }
@@ -63,12 +106,14 @@ function cambiarStatus(id) {
         libro.leido = !libro.leido;
         guardarLibros();
         mostrarLibros();
+        mostrarNotificacion(`El libro: "${libro.titulo}" ha sido marcado como ${libro.leido ? "leído" : "no leído"}`)
     }
 }
 
-//Evento para agregar un libro
-document.getElementById("iniciar").addEventListener("click", function() {
-    document.getElementById("formularioLibro").style.display = "block";
+//Mostrar u ocultar ek formulario
+document.getElementById("mostrarFormulario").addEventListener("click", function() {
+    let formulario = document.getElementById("formularioLibro");
+    formulario.style.display = formulario.style.display === "none" ? "block" : "none";
 });
 
 //Manejo del envío del formulario
@@ -78,7 +123,7 @@ document.getElementById("formularioLibro").addEventListener("submit", function(e
     //Obtener los datos del formulario
     let titulo = document.getElementById("titulo").value.trim();
     let autor = document.getElementById("autor").value.trim();
-    let año = document.getElementById("año").value.trim();
+    let año = parseInt(document.getElementById("año").value.trim());
     let genero = document.getElementById("genero").value.trim();
     let leido = document.getElementById("leido").checked;
 
@@ -93,13 +138,4 @@ document.getElementById("formularioLibro").addEventListener("submit", function(e
         alert("Por favor, ingresa datos válidos");
     }
 });
-
-//Mostrar u ocultar ek formulario
-document.getElementById("mostrarFormulario").addEventListener("click", function() {
-    let formulario = document.getElementById("formularioLibro");
-    formulario.style.display = formulario.style.display === "none" ? "block" : "none";
-});
-
-
-
 

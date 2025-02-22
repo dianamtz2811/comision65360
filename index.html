@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <title>Biblioteca personal</title>
 </head>
@@ -10,10 +11,26 @@
     <h1 id="mensaje"></h1>
     <p>A continuación muestro los libros ya leídos y los pendientes por leer</p>
 
-    <button id="iniciar">Agregar Libro</button>
-    <button id="mostrarFormulario">Mostrar Formulario</button>
+    <div class="botones-container">
+        <button id="mostrarCalculadora">Calculadora de Lectura</button>
+        <button id="mostrarFormulario">Agregar Libro</button>
+    </div>
 
-    <form id="formularioLibro">
+
+    <div id="calculadoraTiempoLectura" style="display: none;">
+        <label for="paginasLibro">Total de páginas del libro:</label>
+        <input type="number" id="paginasLibro" required><br>
+
+        <label for="paginasDia">Páginas que lees por día:</label>
+        <input type="number" id="paginasDia" required><br>
+
+        <button id="calcularTiempo">Calcular</button>
+
+        <p id="resultadoTiempo"></p>
+    </div>
+
+
+    <form id="formularioLibro" style="display: none;">
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" required><br>
 
@@ -29,11 +46,12 @@
         <label for="leido">¿Ya lo leíste?</label>
         <input type="checkbox" id="leido"><br>
 
-        <button type="enviar">Agregar</button>
+        <button type="submit">Agregar</button>
     </form>
 
     <div id="listaLibros"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
