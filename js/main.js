@@ -87,16 +87,44 @@ function mostrarLibros() {
     libros.forEach(libro => {
         let libroElemento = document.createElement("div");
         libroElemento.classList.add("libro");
-        libroElemento.innerHTML = `
-        <h3>${libro.titulo}</h3>
-        <p><strong>Autor:</strong> ${libro.autor}</p>
-        <p><strong>Año:</strong> ${libro.año}</p>
-        <p><strong>Genero:</strong> ${libro.genero}</p>
-        <p><strong>Leido:</strong> ${libro.leido ? "Leído" : "No leído"}</p>
-        <button onclick="cambiarStatus(${libro.id})">Cambiar estado </button> 
-        `;
+
+        //Botón para eliminar libro
+        let botonEliminar = document.createElement("button");
+        botonEliminar.textContent = "❌";
+        botonEliminar.classList.add("btn-eliminar");
+        botonEliminar.addEventListener("click", () => eliminarLibro(libro.id));
+
+        let titulo = document.createElement("h3");
+        titulo.textContent = libro.titulo;
+
+        let autor = document.createElement("p");
+        autor.innerHTML = `<strong>Autor:</strong> ${libro.autor}`;
+
+        let año = document.createElement("p");
+        año.innerHTML = `<strong>Año:</strong> ${libro.año}`;
+
+        let genero = document.createElement("p");
+        genero.innerHTML = `<strong>Género:</strong> ${libro.genero}`;
+
+        let estado = document.createElement("p");
+        estado.innerHTML = `<strong>Estado:</strong> ${libro.leido ? "Leído" : "No leído"}`;
+
+        let botonEstado = document.createElement("button");
+        botonEstado.textContent = "Cambiar estado";
+        botonEstado.addEventListener("click", () => cambiarStatus(libro.id));
+
+
+        libroElemento.append(botonEliminar, titulo, autor, año, genero, estado, botonEstado);
         listaLibros.appendChild(libroElemento);
     });
+}
+
+//Funcion para eliminar un libro
+function eliminarLibro(id) {
+    libros = libros.filter(libro => libro.id !== id);
+    guardarLibros();
+    mostrarLibros();
+    mostrarNotificacion("Libro eliminado correctamente.", "error");
 }
 
 //Función para cambiar el status de un libro

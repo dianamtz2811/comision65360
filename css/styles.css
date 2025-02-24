@@ -54,7 +54,6 @@ h1 {
 
 #mostrarFormulario {
     display: inline-block;
-    background-color: #4c3565;
     color: #4c3565;
     border: none;
     padding: 10px 20px;
@@ -124,6 +123,16 @@ button {
     display: block;
 }
 
+.btn-eliminar {
+    position: absolute;
+    top: 0px;
+    right: 1px;
+    background: none;
+    border: none;
+    font-size: 10px;
+    cursor: pointer;
+}
+
 #listaLibros {
     display: flex;
     flex-wrap: wrap;
@@ -133,10 +142,11 @@ button {
 
 /* Tarjetas de libros */
 .libro {
+    position: relative;
     background: rgb(250, 241, 255);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 5px 25px 25px;
+    padding: 5px 25px 25px 25px;
     margin: 10px;
     width: 250px;
     text-align: left;
